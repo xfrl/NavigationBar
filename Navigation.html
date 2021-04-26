@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed:300,300i,400,400i,700i" rel="stylesheet">
+    <style>
+
+
+        * {
+            box-sizing: border-box;
+        }
+        body {
+            background-image: url(https://code.5g-o.com/wp-content/uploads/2020/11/shadow-bottom.png);
+            min-height: 100vh;
+            background: #8404fa;
+            font-family: 'Roboto Condensed', sans-serif;
+            color: white;
+            line-height: 1.5;
+            -webkit-font-smoothing: antialiased;
+            overflow: hidden;
+            background-image:url(https://code.5g-o.com/wp-content/uploads/2020/10/67.jpeg);
+            background-size: cover;
+        }
+        .header {
+            position: fixed;
+            z-index: 5;
+            width: 100%;
+        }
+        .burger {
+            position: absolute;
+            z-index: 10;
+            right: 25px;
+            top: 25px;
+            cursor: pointer;
+            transform: rotateY(0);
+            transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+        .burger__patty {
+            width: 28px;
+            height: 2px;
+            margin: 0 0 4px 0;
+            background: white;
+            transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+        .burger__patty:last-child {
+            margin-bottom: 0;
+        }
+        .burger--close {
+            transform: rotate(180deg);
+        }
+        .burger--close .burger__patty:nth-child(1) {
+            transform: rotate(45deg) translate(4px, 4px);
+        }
+        .burger--close .burger__patty:nth-child(2) {
+            opacity: 0;
+        }
+        .burger--close .burger__patty:nth-child(3) {
+            transform: rotate(-45deg) translate(5px, -4px);
+        }
+        .menu {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            visibility: hidden;
+        }
+        .menu--active {
+            visibility: visible;
+        }
+        .menu__brand, .menu__list {
+            display: flex;
+            flex-flow: column wrap;
+            align-items: center;
+            justify-content: center;
+            float: left;
+            width: 50%;
+            height: 100vh;
+            overflow: hidden;
+
+        }
+        .menu__list {
+            margin: 0;
+            padding: 0;
+            background: #158cdf;
+            list-style-type: none;
+            transform: translate3d(0, -100%, 0);
+            transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+        .menu__list--active {
+            transform: translate3d(0, 0, 0);
+        }
+        .menu__brand {
+            background: #fff;
+            transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+            transform: translate3d(0, 100%, 0);
+        }
+        .menu__brand--active {
+            transform: translate3d(0, 0, 0);
+        }
+        .menu__item {
+            transform: translate3d(500px, 0, 0);
+            transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+        .menu__item--active {
+            transform: translate3d(0, 0, 0);
+        }
+        .menu__link {
+            display: inline-block;
+            position: relative;
+            font-size: 30px;
+            padding: 15px 0;
+            font-weight: 300;
+            color: white;
+            text-decoration: none;
+            color: white;
+            transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+        .menu__link:before {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            width: 10px;
+            height: 2px;
+            background: white;
+            transform: translateX(-50%);
+            transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+        .menu__link:hover:before {
+            width: 100%;
+        }
+        .menu .menu__item:nth-child(1) {
+            transition-delay: 0.1s;
+        }
+        .menu .menu__item:nth-child(2) {
+            transition-delay: 0.2s;
+        }
+        .menu .menu__item:nth-child(3) {
+            transition-delay: 0.3s;
+        }
+        .menu .menu__item:nth-child(4) {
+            transition-delay: 0.4s;
+        }
+        .menu .menu__item:nth-child(5) {
+            transition-delay: 0.5s;
+        }
+        .menu .menu__item:nth-child(6) {
+            transition-delay: 0.6s;
+        }
+        @media screen and (max-width: 768px) {
+            ul.menu__list, div.menu__brand {
+                float: none;
+                width: 100%;
+                min-height: 0;
+            }
+            ul.menu__list--active, div.menu__brand--active {
+                transform: translate3d(0, 0, 0);
+            }
+            .menu__list {
+                height: 75vh;
+                transform: translate3d(-100%, 0, 0);
+            }
+            .menu__link {
+                font-size: 24px;
+            }
+            .menu__brand {
+                height: 25vh;
+                transform: translate3d(100%, 0, 0);
+
+            }
+            .menu__brand .logo {
+                width: 90px;
+                height: 90px;
+            }
+        }
+        .logo {
+            width: 200px;
+            height: 200px;
+            background-image: url(owu.png);
+            background-size: cover;
+            border-radius: 50%;
+        }
+        h1, h2, h3, p {
+            margin: 0;
+            font-weight: 400;
+        }
+        main {
+            height: 100vh;
+            display: flex;
+            flex-flow: column wrap;
+            justify-content: center;
+            padding: 8vw;
+        }
+        main h1 > a {
+            color: white;
+            text-decoration: none;
+            font-size: 48px;
+            font-weight: 300;
+        }
+        .support {
+            position: fixed;
+            bottom: 24px;
+            color: rgba(0, 0, 0, 0.6);
+        }
+
+    </style>
+</head>
+<body>
+<header class="header">
+    <div class="burger">
+        <div class="burger__patty"></div>
+        <div class="burger__patty"></div>
+        <div class="burger__patty"></div>
+    </div>
+
+    <nav class="menu">
+        <div class="menu__brand">
+            <a href=""><div class="logo"></div></a>
+        </div>
+        <ul class="menu__list">
+            <li class="menu__item"><a href="" class="menu__link">HOME</a></li>
+            <li class="menu__item"><a href="" class="menu__link">ABOUT</a></li>
+            <li class="menu__item"><a href="" class="menu__link">GALLERY</a></li>
+            <li class="menu__item"><a href="" class="menu__link">CONTACT</a></li>
+            <li class="menu__item"><a href="" class="menu__link">LOCATIONS</a></li>
+            <li class="menu__item"><a href="" class="menu__link">TESTIMONIALS</a></li>
+
+
+        </ul>
+    </nav>
+</header>
+
+<main>
+    <h1><a href="http://ettrics.com" target="_blank">NAVBAR</a></h1>
+    <h2>WITH CREATIVE SPLIT SCREEN USING HTML AND CSS 3</h2>
+
+</main>
+<script>
+    (function() {
+
+        var Menu = (function() {
+            var burger = document.querySelector('.burger');
+            var menu = document.querySelector('.menu');
+            var menuList = document.querySelector('.menu__list');
+            var brand = document.querySelector('.menu__brand');
+            var menuItems = document.querySelectorAll('.menu__item');
+
+            var active = false;
+
+            var toggleMenu = function() {
+                if (!active) {
+                    menu.classList.add('menu--active');
+                    menuList.classList.add('menu__list--active');
+                    brand.classList.add('menu__brand--active');
+                    burger.classList.add('burger--close');
+                    for (var i = 0, ii = menuItems.length; i < ii; i++) {
+                        menuItems[i].classList.add('menu__item--active');
+                    }
+
+                    active = true;
+                } else {
+                    menu.classList.remove('menu--active');
+                    menuList.classList.remove('menu__list--active');
+                    brand.classList.remove('menu__brand--active');
+                    burger.classList.remove('burger--close');
+                    for (var i = 0, ii = menuItems.length; i < ii; i++) {
+                        menuItems[i].classList.remove('menu__item--active');
+                    }
+
+                    active = false;
+                }
+            };
+
+            var bindActions = function() {
+                burger.addEventListener('click', toggleMenu, false);
+            };
+
+            var init = function() {
+                bindActions();
+            };
+
+            return {
+                init: init
+            };
+
+        }());
+
+        Menu.init();
+
+    }());
+
+
+</script>
+</body>
+</html>
